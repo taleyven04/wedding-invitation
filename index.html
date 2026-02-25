@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Royal Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display:wght@500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* General Reset */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* prevents scrolling on mobile */
+    font-family:'Cormorant Garamond', serif;
+    background:#f5e8c7;
+}
+
+/* VIDEO */
+#introVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* fills the screen without stretching */
+    z-index: 1;
+}
+
+/* INVITATION SECTION */
+#invitationSection {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+    linear-gradient(rgba(245,232,199,0.85), rgba(245,232,199,0.9)),
+    url('a_digital_illustration_of_an_idyllic_indian_weddin.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 2s ease;
+    z-index: 2; /* ensures card is on top */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* MAIN CARD */
+.inviteCard{
+    width:90%;
+    max-width:600px; /* smaller max-width for phones */
+    padding:40px 20px;
+    background:rgba(255,248,230,0.92);
+    border:3px solid #c6a75e;
+    box-shadow:
+        0 0 40px rgba(198,167,94,0.6),
+        inset 0 0 30px rgba(198,167,94,0.3);
+    text-align:center;
+    position:relative;
+    border-radius:8px;
+}
+
+/* INNER BORDER */
+.inviteCard:before{
+    content:"";
+    position:absolute;
+    top:15px;
+    left:15px;
+    right:15px;
+    bottom:15px;
+    border:1px solid #c6a75e;
+    pointer-events:none;
+}
+
+/* TEXT STYLES */
+.topText{
+    font-family:'Cinzel', serif;
+    letter-spacing:3px;
+    font-size:15px;
+    color:#7a5c2e;
+    text-transform:uppercase;
+    margin-bottom:20px;
+}
+
+.bigName{
+    font-family:'Playfair Display', serif;
+    font-size:42px;
+    color:#4e351d;
+    margin:10px 0;
+}
+
+.smallText{
+    font-size:20px;
+    color:#5e4325;
+    margin:6px 0;
+}
+
+.sectionTitle{
+    font-family:'Cinzel', serif;
+    font-size:26px;
+    margin-top:30px;
+    color:#8b6f47;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.footer{
+    margin-top:35px;
+    font-size:18px;
+    color:#4e351d;
+}
+
+/* GOLDEN FLOWER ANIMATION */
+.flower{
+    position:absolute;
+    top:-50px;
+    width:12px;
+    height:12px;
+    background:radial-gradient(circle,#f7d46a,#c6a75e);
+    border-radius:50%;
+    opacity:0.8;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(360deg);
+    }
+}
+
+/* Responsive text for small phones */
+@media (max-width:480px){
+    .bigName{ font-size:28px; }
+    .smallText{ font-size:16px; }
+    .sectionTitle{ font-size:20px; }
+    .inviteCard{ padding:30px 15px; }
+}
+</style>
+</head>
+
+<body>
+
+<video id="introVideo" autoplay muted playsinline>
+    <source src="final+music.mp4" type="video/mp4">
+</video>
+
+<div id="invitationSection">
+
+<div class="inviteCard">
+
+<p class="topText">Please Join Us For The Wedding Of</p>
+
+<div class="bigName">Sivaniani Munisami (Silina)</div>
+<p class="smallText">Beloved daughter of Deven Munisami & Shainee Munisami</p>
+
+<p class="smallText" style="margin:15px 0;">and</p>
+
+<div class="bigName">Oliver Julian Fleischer</div>
+<p class="smallText">
+Cherished son of Andreas Fleischer,<br>
+Lovingly remembered Anke Fleischer,<br>
+Grandson of Ingrid Schaefer
+</p>
+
+<p class="smallText" style="margin-top:15px;">Shall unite in sacred matrimony</p>
+
+<p class="sectionTitle">Wedding Eve</p>
+<p class="smallText">Saturday, 2nd May — 6:00 PM</p>
+<p class="smallText">Crystal Taj Domaine</p>
+
+<p class="sectionTitle">Temple Wedding Ceremony</p>
+<p class="smallText">Sunday, 3rd May — 10:00 AM</p>
+<p class="smallText">Sfree Draupadi Ammen Kovil, Mare D'Albert</p>
+
+<p class="footer">
+With the warmest compliments of<br>
+The Munisami • Fleischer • Dalevadoo Families
+</p>
+
+</div>
+</div>
+
+<script>
+var video = document.getElementById("introVideo");
+var invite = document.getElementById("invitationSection");
+
+video.onended = function() {
+    video.style.transition = "opacity 2s ease";
+    video.style.opacity = "0";
+    setTimeout(function(){
+        video.style.display = "none";
+        invite.style.opacity = "1";
+        createFlowers();
+    },2000);
+};
+
+document.body.addEventListener("click", function() {
+    video.muted = false;
+});
+
+/* GOLDEN FLOWERS */
+function createFlowers(){
+    for(let i=0;i<30;i++){
+        let flower = document.createElement("div");
+        flower.classList.add("flower");
+        flower.style.left = Math.random()*100 + "vw";
+        flower.style.animationDuration = (6 + Math.random()*5) + "s";
+        flower.style.opacity = Math.random();
+        document.getElementById("invitationSection").appendChild(flower);
+    }
+}
+</script>
+
+</body>
+</html>
