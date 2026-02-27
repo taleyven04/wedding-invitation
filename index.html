@@ -137,26 +137,26 @@ html, body {
     margin-top:14px;
     font-size:12px;
 }
-  @media (max-width:480px){
+@media (max-width:480px){
 
+    /* Make scroll bigger */
     .scrollContainer{
-        width: 95%;
+        width: 110%;
+        max-width: none;
     }
 
+    /* Adjust text area slightly */
     .scrollContent{
-        width: 75%;
+        width: 70%;
     }
 
-    .bigName{ font-size:18px; }
-    .smallText{ font-size:11px; }
-    .sectionTitle{ font-size:12px; }
-    .topText{ font-size:9px; }
-    .footer{ font-size:9px; }
+    /* Keep text readable */
+    .bigName{ font-size:20px; }
+    .smallText{ font-size:12px; }
+    .sectionTitle{ font-size:13px; }
+    .topText{ font-size:10px; }
+    .footer{ font-size:10px; }
 
-    .locationBtn{
-        font-size:11px;
-        padding:5px 8px;
-    }
 }
 
 /* LOCATION BUTTONS */
@@ -267,6 +267,7 @@ video.addEventListener("ended", () => {
 
 </body>
 </html>
+
 
 
 
