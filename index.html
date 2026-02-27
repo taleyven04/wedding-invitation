@@ -12,7 +12,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
     font-family:'Cormorant Garamond', serif;
     background: black;
 }
@@ -61,7 +61,7 @@ html, body {
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,12 +79,10 @@ html, body {
 
 /* SCROLL CONTAINER */
 .scrollContainer{
-    position: adsolute;
-top: 20px;  
+    position: relative; 
     width: 90%;
     max-width: 700px;
-    transform: scale(0.8);
-    transition: transform 0.3s ease;
+    margin: auto;
 }
 
 /* SCROLL IMAGE */
@@ -254,6 +252,7 @@ video.addEventListener("ended", () => {
 
 </body>
 </html>
+
 
 
 
