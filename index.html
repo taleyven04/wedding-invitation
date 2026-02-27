@@ -94,9 +94,10 @@ html, body {
 /* TEXT INSIDE SCROLL */
 .scrollContent{
     position: absolute;
-    top: 22%;
-    left: 14%;
-    width: 72%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65%;
     text-align: center;
     color: #4e351d;
 }
@@ -136,12 +137,26 @@ html, body {
     margin-top:14px;
     font-size:12px;
 }
-    @media (max-width:480px){
-    .bigName{ font-size:16px; }
-    .smallText{ font-size:10px; }
-    .sectionTitle{ font-size:11px; }
+  @media (max-width:480px){
+
+    .scrollContainer{
+        width: 95%;
+    }
+
+    .scrollContent{
+        width: 75%;
+    }
+
+    .bigName{ font-size:18px; }
+    .smallText{ font-size:11px; }
+    .sectionTitle{ font-size:12px; }
     .topText{ font-size:9px; }
     .footer{ font-size:9px; }
+
+    .locationBtn{
+        font-size:11px;
+        padding:5px 8px;
+    }
 }
 
 /* LOCATION BUTTONS */
@@ -252,6 +267,7 @@ video.addEventListener("ended", () => {
 
 </body>
 </html>
+
 
 
 
