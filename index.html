@@ -5,34 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wedding Invitation</title>
 
-<!-- GOOGLE FONTS -->
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display:wght@500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 html, body {
     margin: 0;
     padding: 0;
-    min-height: 100%;
+    height: 100%;
+    overflow: hidden;
     font-family:'Cormorant Garamond', serif;
     background: black;
-    overflow-x: hidden;
 }
 
-/* ================= VIDEO ================= */
+/* VIDEO CONTAINER */
 .videoWrapper {
     position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
     z-index: 1;
 }
 
 #introVideo {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
+    height: auto; /* maintain aspect ratio */
+    max-height: 100vh; /* never taller than viewport */
+    object-fit: contain; /* full video visible */
     background: black;
+    display: block;
 }
 
 /* PLAY BUTTON */
@@ -42,7 +45,7 @@ html, body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.6);
     color: #fff;
     border: none;
     padding: 20px 40px;
@@ -52,38 +55,43 @@ html, body {
     font-family: 'Cinzel', serif;
 }
 
-/* ================= INVITATION ================= */
+/* INVITATION SECTION */
 #invitationSection {
-    position: relative;
-    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     background:
-        linear-gradient(rgba(245,232,199,0.9), rgba(245,232,199,0.95)),
-        url('a_digital_illustration_of_an_idyllic_indian_weddin.png');
+    linear-gradient(rgba(245,232,199,0.88), rgba(245,232,199,0.92)),
+    url('a_digital_illustration_of_an_idyllic_indian_weddin.png');
     background-size: cover;
     background-position: center;
     opacity: 0;
     transition: opacity 2s ease;
     z-index: 2;
     padding: 20px;
+    box-sizing: border-box;
 }
 
-/* ================= SCROLL ================= */
-.scrollContainer {
+/* SCROLL CONTAINER */
+.scrollContainer{
     position: relative;
     width: 100%;
     max-width: 720px;
 }
 
-.scrollImage {
+/* SCROLL IMAGE */
+.scrollImage{
     width: 100%;
     display: block;
 }
 
 /* TEXT INSIDE SCROLL */
-.scrollContent {
+.scrollContent{
     position: absolute;
     top: 22%;
     left: 14%;
@@ -92,138 +100,155 @@ html, body {
     color: #4e351d;
 }
 
-/* TEXT STYLES */
-.topText {
+/* TEXT STYLING */
+.topText{
     font-family:'Cinzel', serif;
-    letter-spacing: 2px;
-    font-size: 12px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
+    letter-spacing:2px;
+    font-size:12px;
+    text-transform:uppercase;
+    margin-bottom:12px;
 }
 
-.bigName {
+.bigName{
     font-family:'Playfair Display', serif;
-    font-size: 26px;
-    margin: 6px 0;
+    font-size:26px;
+    margin:6px 0;
 }
 
-.smallText {
-    font-size: 14px;
-    line-height: 1.5;
-    margin: 6px 0;
+.smallText{
+    font-size:14px;
+    margin:4px 0;
+    line-height:1.4;
 }
 
-.sectionTitle {
+.sectionTitle{
     font-family:'Cinzel', serif;
-    font-size: 16px;
-    letter-spacing: 1px;
-    margin-top: 14px;
-    text-transform: uppercase;
+    font-size:16px;
+    margin-top:14px;
+    text-transform:uppercase;
+    letter-spacing:1px;
 }
 
-.footer {
-    margin-top: 14px;
-    font-size: 12px;
+.footer{
+    margin-top:14px;
+    font-size:12px;
 }
 
-/* LOCATION BUTTON */
-.locationBtn {
-    display: inline-block;
-    margin-top: 6px;
-    font-size: 14px;
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
+/* LOCATION BUTTONS */
+.locationBtn{
+    display:inline-block;
+    margin-top:4px;
+    font-size:14px;
+    text-decoration:none;
+    color:#fff;
+    font-weight:bold;
     background: #7a5c2e;
-    padding: 8px 14px;
+    padding: 6px 12px;
     border-radius: 8px;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-.locationBtn:hover {
+.locationBtn:hover{
     background: #4e351d;
+    color:#fff;
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 @media (max-width:480px){
-    .bigName { font-size: 18px; }
-    .smallText { font-size: 12px; }
-    .sectionTitle { font-size: 14px; }
-    .topText { font-size: 10px; }
+    .scrollContainer{
+        transform: scale(1.2);
+    }
+    .bigName{ font-size:20px; }
+    .smallText{ font-size:14px; }
+    .sectionTitle{ font-size:16px; }
+    #playButton{
+        padding: 16px 32px;
+        font-size:20px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- PLAY BUTTON -->
-<button id="playButton">Enter Invitation</button>
-
-<!-- VIDEO -->
+<!-- VIDEO CONTAINER -->
 <div class="videoWrapper">
-    <video id="introVideo" muted playsinline>
-        <source src="intro.mp4" type="video/mp4">
+    <video id="introVideo" playsinline>
+        <source src="final+music.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
     </video>
 </div>
 
-<!-- INVITATION -->
-<section id="invitationSection">
+<!-- PLAY BUTTON -->
+<button id="playButton">▶ Play Invitation</button>
 
+<!-- INVITATION SECTION -->
+<div id="invitationSection">
     <div class="scrollContainer">
-
-        <!-- SCROLL IMAGE -->
-        <img src="WhatsApp Image 2026-02-27 at 17.25.20.jpeg"
-             alt="Royal Scroll"
-             class="scrollImage">
-
-        <!-- TEXT -->
+        <img src="scroll.png" class="scrollImage">
         <div class="scrollContent">
-
-            <div class="topText">Please join us for the wedding of</div>
-
-            <div class="bigName">Sivanjani Munisami</div>
-            <div class="smallText">(Silina)</div>
-
-            <div class="smallText">
-                Beloved daughter of Deven Munisami &<br>
-                Shainee Munisami
-            </div>
-
-            <div class="sectionTitle">and</div>
-
+            <p class="topText">Please Join Us For The Wedding Of</p>
+            <div class="bigName">Sivaniani Munisami (Silina)</div>
+            <p class="smallText">Beloved daughter of Deven Munisami & Shainee Munisami</p>
+            <p class="smallText" style="margin:18px 0;">and</p>
             <div class="bigName">Oliver Julian Fleischer</div>
-
-            <div class="smallText">
-                Cherished son of Andreas Fleischer & Jamie Fleischer<br>
+            <p class="smallText">
+                Cherished son of Andreas Fleischer,<br>
+                Lovingly remembered Anke Fleischer,<br>
                 Grandson of Ingrid Schaefer
-            </div>
+            </p>
+            <p class="smallText" style="margin-top:18px;">Shall unite in sacred matrimony</p>
 
-            <div class="sectionTitle">Shall unite in sacred matrimony</div>
+            <p class="sectionTitle">Wedding Eve</p>
+            <p class="smallText">Saturday, 2nd May — 6:00 PM</p>
+            <a class="locationBtn" href="https://maps.app.goo.gl/ZKhef4peB7J4X6M99" target="_blank">
+            📍 Crystal Taj Domaine
+            </a>
 
-            <div class="sectionTitle">Wedding Eve</div>
-            <div class="smallText">Saturday, 2nd May — 6:00 PM</div>
+            <p class="sectionTitle">Temple Wedding Ceremony</p>
+            <p class="smallText">Sunday, 3rd May — 10:00 AM</p>
+            <a class="locationBtn" href="https://maps.app.goo.gl/hRpn8t4JRp8VXp6p9" target="_blank">
+            📍 Shree Draupadi Ammen Kovil
+            </a>
 
-            <a href="#" class="locationBtn">Crystal Taj Domaine</a>
-
-            <div class="footer">Temple Wedding Ceremony</div>
-
+            <p class="footer">
+                With the warmest compliments of<br>
+                The Munisami • Fleischer • Dalevadoo Families
+            </p>
         </div>
     </div>
-</section>
+</div>
 
-<!-- SCRIPT -->
+<!-- INVITATION MUSIC -->
+<audio id="bgMusic">
+    <source src="invi_music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
 <script>
-const playButton = document.getElementById("playButton");
 const video = document.getElementById("introVideo");
 const invite = document.getElementById("invitationSection");
+const playBtn = document.getElementById("playButton");
+const bgMusic = document.getElementById("bgMusic");
 
-playButton.addEventListener("click", () => {
-    playButton.style.display = "none";
+// Play video on click
+playBtn.addEventListener("click", () => {
     video.play();
+    playBtn.style.display = "none";
+});
 
-    video.onended = () => {
+// When video ends, fade out video and show invitation, then play music
+video.addEventListener("ended", () => {
+    video.style.transition = "opacity 2s ease";
+    video.style.opacity = "0";
+    setTimeout(() => {
+        video.style.display = "none";
         invite.style.opacity = "1";
-    };
+
+        // Play invitation music once
+        bgMusic.volume = 0.6;
+        bgMusic.play();
+    }, 2000);
 });
 </script>
 
