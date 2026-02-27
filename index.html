@@ -12,7 +12,8 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;   /* allow vertical scroll */
+    overflow-y: auto;
     font-family:'Cormorant Garamond', serif;
     background: black;
 }
@@ -31,9 +32,9 @@ html, body {
 
 #introVideo {
     width: 100%;
-    height: auto; /* maintain aspect ratio */
-    max-height: 100vh; /* never taller than viewport */
-    object-fit: contain; /* full video visible */
+    height: auto;
+    max-height: 100vh;
+    object-fit: contain;
     background: black;
     display: block;
 }
@@ -61,7 +62,7 @@ html, body {
     top: 0;
     left: 0;
     width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,6 +88,7 @@ html, body {
 /* SCROLL IMAGE */
 .scrollImage{
     width: 100%;
+    height: auto;
     display: block;
 }
 
@@ -150,17 +152,16 @@ html, body {
 
 .locationBtn:hover{
     background: #4e351d;
-    color:#fff;
 }
 
-/* MOBILE */
+/* MOBILE FIX */
 @media (max-width:480px){
-    .scrollContainer{
-        transform: scale(1.2);
-    }
-    .bigName{ font-size:20px; }
-    .smallText{ font-size:14px; }
-    .sectionTitle{ font-size:16px; }
+
+    .bigName{ font-size:18px; }
+    .smallText{ font-size:12px; }
+    .sectionTitle{ font-size:14px; }
+    .topText{ font-size:10px; }
+
     #playButton{
         padding: 16px 32px;
         font-size:20px;
@@ -170,87 +171,3 @@ html, body {
 </head>
 
 <body>
-
-<!-- VIDEO CONTAINER -->
-<div class="videoWrapper">
-    <video id="introVideo" playsinline>
-        <source src="final+music.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
-</div>
-
-<!-- PLAY BUTTON -->
-<button id="playButton">▶ Play Invitation</button>
-
-<!-- INVITATION SECTION -->
-<div id="invitationSection">
-    <div class="scrollContainer">
-        <img src="scroll.png" class="scrollImage">
-        <div class="scrollContent">
-            <p class="topText">Please Join Us For The Wedding Of</p>
-            <div class="bigName">Sivaniani Munisami (Silina)</div>
-            <p class="smallText">Beloved daughter of Deven Munisami & Shainee Munisami</p>
-            <p class="smallText" style="margin:18px 0;">and</p>
-            <div class="bigName">Oliver Julian Fleischer</div>
-            <p class="smallText">
-                Cherished son of Andreas Fleischer,<br>
-                Lovingly remembered Anke Fleischer,<br>
-                Grandson of Ingrid Schaefer
-            </p>
-            <p class="smallText" style="margin-top:18px;">Shall unite in sacred matrimony</p>
-
-            <p class="sectionTitle">Wedding Eve</p>
-            <p class="smallText">Saturday, 2nd May — 6:00 PM</p>
-            <a class="locationBtn" href="https://maps.app.goo.gl/ZKhef4peB7J4X6M99" target="_blank">
-            📍 Crystal Taj Domaine
-            </a>
-
-            <p class="sectionTitle">Temple Wedding Ceremony</p>
-            <p class="smallText">Sunday, 3rd May — 10:00 AM</p>
-            <a class="locationBtn" href="https://maps.app.goo.gl/hRpn8t4JRp8VXp6p9" target="_blank">
-            📍 Shree Draupadi Ammen Kovil
-            </a>
-
-            <p class="footer">
-                With the warmest compliments of<br>
-                The Munisami • Fleischer • Dalevadoo Families
-            </p>
-        </div>
-    </div>
-</div>
-
-<!-- INVITATION MUSIC -->
-<audio id="bgMusic">
-    <source src="invi_music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-
-<script>
-const video = document.getElementById("introVideo");
-const invite = document.getElementById("invitationSection");
-const playBtn = document.getElementById("playButton");
-const bgMusic = document.getElementById("bgMusic");
-
-// Play video on click
-playBtn.addEventListener("click", () => {
-    video.play();
-    playBtn.style.display = "none";
-});
-
-// When video ends, fade out video and show invitation, then play music
-video.addEventListener("ended", () => {
-    video.style.transition = "opacity 2s ease";
-    video.style.opacity = "0";
-    setTimeout(() => {
-        video.style.display = "none";
-        invite.style.opacity = "1";
-
-        // Play invitation music once
-        bgMusic.volume = 0.6;
-        bgMusic.play();
-    }, 2000);
-});
-</script>
-
-</body>
-</html>
