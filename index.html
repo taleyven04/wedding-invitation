@@ -59,10 +59,10 @@ html, body {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    padding: 60px 0;
+    padding: 80px 16px;
     background:
-    linear-gradient(rgba(245,232,199,0.88), rgba(245,232,199,0.92)),
-    url('a_digital_illustration_of_an_idyllic_indian_weddin.png');
+        linear-gradient(rgba(245,232,199,0.88), rgba(245,232,199,0.92)),
+        url('a_digital_illustration_of_an_idyllic_indian_weddin.png');
     background-size: cover;
     background-position: center;
     opacity: 0;
@@ -70,30 +70,28 @@ html, body {
     z-index: 2;
 }
 
-/* ================= SCROLL CARD ================= */
+/* ================= INVITATION CARD ================= */
 
-.scrollContainer {
-    position: relative;
-    width: 94%;
+.inviteCard {
     max-width: 420px;
     margin: 0 auto;
-}
-
-.scrollImage {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.scrollContent {
-    position: absolute;
-    inset: 0;
-    padding: 32px 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    background: #fff9e8;
+    border: 2px solid #d6b77c;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    padding: 40px 26px;
     text-align: center;
     color: #4e351d;
+    position: relative;
+}
+
+/* decorative corners */
+.inviteCard::before,
+.inviteCard::after {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(214,183,124,0.5);
+    pointer-events: none;
 }
 
 /* ================= TEXT ================= */
@@ -103,45 +101,45 @@ html, body {
     font-size: 12px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 }
 
 .bigName {
     font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    margin: 8px 0;
+    font-size: 24px;
+    margin: 10px 0;
 }
 
 .smallText {
-    font-size: 14px;
+    font-size: 15px;
+    line-height: 1.6;
     margin: 6px 0;
-    line-height: 1.5;
 }
 
 .sectionTitle {
     font-family: 'Cinzel', serif;
     font-size: 15px;
-    margin-top: 18px;
+    margin-top: 22px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .footer {
-    margin-top: 18px;
-    font-size: 12px;
+    margin-top: 22px;
+    font-size: 13px;
 }
 
 /* ================= BUTTONS ================= */
 
 .locationBtn {
     display: inline-block;
-    margin-top: 6px;
+    margin-top: 8px;
     font-size: 13px;
     text-decoration: none;
     color: #fff;
     font-weight: bold;
     background: #7a5c2e;
-    padding: 8px 14px;
+    padding: 8px 16px;
     border-radius: 20px;
     transition: 0.3s ease;
 }
@@ -153,16 +151,17 @@ html, body {
 /* ================= DESKTOP ================= */
 
 @media (min-width: 768px) {
-    .scrollContainer {
+    .inviteCard {
         max-width: 520px;
+        padding: 48px 36px;
     }
 
     .bigName {
-        font-size: 26px;
+        font-size: 28px;
     }
 
     .smallText {
-        font-size: 15px;
+        font-size: 16px;
     }
 }
 
@@ -182,48 +181,46 @@ html, body {
 
 <!-- INVITATION -->
 <div id="invitationSection">
-    <div class="scrollContainer">
-        <img src="scroll.png" class="scrollImage" alt="Scroll">
 
-        <div class="scrollContent">
+    <div class="inviteCard">
 
-            <p class="topText">Please Join Us For The Wedding Of</p>
+        <p class="topText">Please Join Us For The Wedding Of</p>
 
-            <div class="bigName">Sivaniani Munisami (Silina)</div>
-            <p class="smallText">
-                Beloved daughter of Deven Munisami & Shainee Munisami
-            </p>
+        <div class="bigName">Sivaniani Munisami (Silina)</div>
+        <p class="smallText">
+            Beloved daughter of Deven Munisami & Shainee Munisami
+        </p>
 
-            <p class="smallText">and</p>
+        <p class="smallText">and</p>
 
-            <div class="bigName">Oliver Julian Fleischer</div>
-            <p class="smallText">
-                Cherished son of Andreas Fleischer,<br>
-                Lovingly remembered Anke Fleischer,<br>
-                Grandson of Ingrid Schaefer
-            </p>
+        <div class="bigName">Oliver Julian Fleischer</div>
+        <p class="smallText">
+            Cherished son of Andreas Fleischer,<br>
+            Lovingly remembered Anke Fleischer,<br>
+            Grandson of Ingrid Schaefer
+        </p>
 
-            <p class="smallText">Shall unite in sacred matrimony</p>
+        <p class="smallText">Shall unite in sacred matrimony</p>
 
-            <p class="sectionTitle">Wedding Eve</p>
-            <p class="smallText">Saturday, 2nd May — 6:00 PM</p>
-            <a class="locationBtn" href="https://maps.app.goo.gl/ZKhef4peB7J4X6M99" target="_blank">
-                📍 Crystal Taj Domaine
-            </a>
+        <p class="sectionTitle">Wedding Eve</p>
+        <p class="smallText">Saturday, 2nd May — 6:00 PM</p>
+        <a class="locationBtn" href="https://maps.app.goo.gl/ZKhef4peB7J4X6M99" target="_blank">
+            📍 Crystal Taj Domaine
+        </a>
 
-            <p class="sectionTitle">Temple Wedding Ceremony</p>
-            <p class="smallText">Sunday, 3rd May — 10:00 AM</p>
-            <a class="locationBtn" href="https://maps.app.goo.gl/hRpn8t4JRp8VXp6p9" target="_blank">
-                📍 Shree Draupadi Ammen Kovil
-            </a>
+        <p class="sectionTitle">Temple Wedding Ceremony</p>
+        <p class="smallText">Sunday, 3rd May — 10:00 AM</p>
+        <a class="locationBtn" href="https://maps.app.goo.gl/hRpn8t4JRp8VXp6p9" target="_blank">
+            📍 Shree Draupadi Ammen Kovil
+        </a>
 
-            <p class="footer">
-                With the warmest compliments of<br>
-                The Munisami • Fleischer • Dalevadoo Families
-            </p>
+        <p class="footer">
+            With the warmest compliments of<br>
+            The Munisami • Fleischer • Dalevadoo Families
+        </p>
 
-        </div>
     </div>
+
 </div>
 
 <audio id="bgMusic">
