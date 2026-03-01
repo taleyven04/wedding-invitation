@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Wedding Invitation</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display:wght@500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
@@ -62,7 +61,7 @@ html, body {
         linear-gradient(rgba(245,232,199,0.85), rgba(245,232,199,0.9)),
         url('a_digital_illustration_of_an_idyllic_indian_weddin.png');
 
-    background-size: cover;       /* SHOW FULL IMAGE */
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
@@ -74,11 +73,11 @@ html, body {
 /* ================= CARD ================= */
 .inviteCard {
     width: 92%;
-    max-width: 380px;
+    max-width: 420px;
     background: #fff9e8;
     border: 2px solid #d6b77c;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    padding: 28px 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    padding: 30px 22px;
     text-align: center;
     color: #4e351d;
     position: relative;
@@ -91,6 +90,15 @@ html, body {
     inset:10px;
     border:1px solid rgba(214,183,124,0.4);
     pointer-events:none;
+}
+
+/* ================= COUPLE IMAGE ================= */
+.cardCouple{
+    width: 200px;
+    max-width: 75%;
+    margin: 0 auto 18px auto;
+    display:block;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
 }
 
 /* ================= TEXT ================= */
@@ -143,7 +151,7 @@ html, body {
     inset: 0;
     pointer-events: none;
     overflow: hidden;
-    z-index: 1; /* BEHIND CARD */
+    z-index: 1;
 }
 
 .flower {
@@ -194,6 +202,9 @@ html, body {
 <div class="flower-container" id="flowerContainer"></div>
 
 <div class="inviteCard">
+
+<!-- 🌸 COUPLE IMAGE INSIDE CARD -->
+<img src="couple.png" class="cardCouple" alt="Bride and Groom">
 
 <p class="topText">Please Join Us For The Wedding Of</p>
 
@@ -269,7 +280,7 @@ function createFlower(){
 }
 
 function startFlowers(){
-    setInterval(createFlower,1500); /* SOFT ANIMATION */
+    setInterval(createFlower,1500);
 }
 
 </script>
